@@ -1,0 +1,54 @@
+name: Compile LaTeX Resume and Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  compile-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Resume Repository
+        uses: actions/checkout@v3
+        
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          
+      - name: Check PDF was created
+        run: |
+          if [ -f "resume.pdf" ]; then
+            echo "PDF compiled successfully"
+          else
+            echo "PDF compilation failed"
+            exit 1
+          fi
+          
+      - name: Checkout GitHub Pages Repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.repository_owner }}/github-page-repo
+          # Replace 'github-page-repo' with your actual GitHub Pages repo name
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: github-pages
+          
+      - name: Copy PDF to GitHub Pages Repo
+        run: |
+          cp resume.pdf github-pages/
+          
+      - name: Commit and Push to GitHub Pages Repo
+        working-directory: github-pages
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add resume.pdf
+          git commit -m "Update resume PDF - $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git push
