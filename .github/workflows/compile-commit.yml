@@ -1,0 +1,56 @@
+name: Compile LaTeX Resume and Commit PDF
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - '**.tex'
+      - '.github/workflows/compile-and-deploy.yml'
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  compile-and-commit:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # Permission to commit and push
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          # Change 'resume.tex' to your actual LaTeX filename
+          
+      - name: Verify PDF was created
+        run: |
+          if [ -f "resume.pdf" ]; then
+            echo "✓ PDF compiled successfully"
+            ls -lh resume.pdf
+          else
+            echo "✗ PDF compilation failed"
+            exit 1
+          fi
+          
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+      - name: Commit and Push PDF
+        run: |
+          # Check if resume.pdf has changed
+          if git diff --quiet resume.pdf; then
+            echo "No changes to PDF, skipping commit"
+          else
+            git add resume.pdf
+            git commit -m "Build: Compile LaTeX resume to PDF [$(date '+%Y-%m-%d %H:%M:%S')]"
+            git push
+          fi
