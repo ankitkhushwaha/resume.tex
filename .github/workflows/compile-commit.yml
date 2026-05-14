@@ -37,6 +37,9 @@ jobs:
             echo "PDF compilation failed"
             exit 1
           fi
+          mkdir -p build
+          mv resume.pdf build/resume.pdf
+          ls -lh build/resume.pdf
           
       - name: Configure Git
         run: |
@@ -45,7 +48,7 @@ jobs:
           
       - name: Commit and Push PDF
         run: |
-          # Check if resume.pdf has changed
-          git add resume.pdf
-          git commit -m "Build: Compile LaTeX resume to PDF [$(date '+%Y-%m-%d %H:%M:%S')]"
-          git push
+          git add -f build/resume.pdf
+          # Try to commit, but don't fail if there are no changes
+          git commit -m "Build: Compile LaTeX resume to PDF [$(date '+%Y-%m-%d %H:%M:%S')]" || true
+          git push origin HEAD:main || echo "Push failed or no changes to push"
