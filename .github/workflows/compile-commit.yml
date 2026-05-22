@@ -1,4 +1,4 @@
-name: Compile LaTeX Resume and Commit PDF
+name: compile-commit-resume
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
     paths:
       - '**.tex'
       - '.github/workflows/compile-and-deploy.yml'
+      - '.github/workflows/notify.yml'
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
