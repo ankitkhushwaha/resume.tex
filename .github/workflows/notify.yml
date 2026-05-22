@@ -6,6 +6,7 @@ on:
       - compile-commit-resume
     types:
       - completed
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
   notify:
