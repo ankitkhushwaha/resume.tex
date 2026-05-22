@@ -1,0 +1,38 @@
+name: notify
+
+on:
+  workflow_run:
+    workflows:
+      - compile-commit-resume
+    types:
+      - completed
+
+jobs:
+  notify:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send email on success
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+
+          subject: "resume.pdf built successfully"
+          to: ${{ secrets.SEND_EMAIL_USERNAME }}
+          from: GitHub Actions
+
+          body: |
+            Hello Ankit Bhai,
+            resume.pdf built successfully.
+
+            Workflow: ${{ github.event.workflow_run.name }}
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.event.workflow_run.head_branch }}
+
+            Commit: ${{ github.event.workflow_run.head_sha }}
