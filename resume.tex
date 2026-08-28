@@ -137,7 +137,7 @@
 \resumeSubHeadingListStart
 \resumeSubheading
 {Indian Institute Of Technology Dharwad}{Dec. 2022 -- Present}
-{Bachelor of Science, Physics}{Dharwad, Karnataka}
+{Bachelor of Science-Master of Science, Physics}{Dharwad, Karnataka}
 \resumeSubHeadingListEnd
 \vspace{-12pt}
 
@@ -164,14 +164,18 @@
     \small{
     \item \textbf{Languages:} C, Python\\
       \vspace{-2pt}
-    \item \textbf{Systems \& Tools:} Linux, QEMU, gdb, GNU Make, Git, Vim \\
+    \item \textbf{Systems \& Tools:} Linux, QEMU, U-boot, GDB, GNU Make, Git, Vim, strace, ftrace \\
       \vspace{-2pt}
-    \item \textbf{Core Skills:} Driver development, Kernel Memory
-      Analysis, Kernel debugging, Command-line interface, Open Source
-      Development, GitHub Actions (CI/CD), Workflow Automation \\
+    \item \textbf{Core Skills:} Linux Device Driver, Kernel Modules,
+ Kernel debugging, System Programming, CLI, Open Source
+      Development, GitHub Actions (CI/CD) \\
+      \vspace{-2pt}
+    \item \textbf{Kernel Subsystems:} Character Drivers, Sysfs, Procfs, Timers, deferred work, Interrupt Handling  \\
+
       \vspace{-2pt}
     \item \textbf{Familiar With:} C++, Shell Scripting, Web Development\\
     }
+\vspace{-2pt}
 \end{itemize}
 \vspace{-18pt}
 
@@ -180,20 +184,22 @@
 \resumeSubHeadingListStart
 \vspace{-2pt}
 \resumeSubheading
-{Linux Foundation Mentorship (LFX '25) — Linux Kernel}{Sept 2025 -- Dec 2025}
+{Linux Foundation Mentorship (LFX '25) - Linux Kernel}{Sept 2025 -- Dec 2025}
 {Mentee}{\href{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=grep\&q=ankitkhushwaha.linux\%40gmail.com}{Upstream
 Linux Kernel Patches}}
 \vspace{-6pt}
 \resumeItemListStart
-\resumeItem{Contributed 8+ patches across Linux kernel selftests in
+\resumeItem{Contributed 10+ patches across Linux kernel selftests in
 net, mm, tls, mptcp, and user\_events subsystems.}
-\resumeItem{Reproduced syzbot-reported failures using QEMU and
-analyzed execution paths with ftrace and gdb to identify root causes.}
+\resumeItem{Analyzed syzbot bugs using QEMU and
+analyzed execution paths with ftrace \& gdb to identify root causes.}
 \resumeItem{Performed memory error analysis using KASAN to detect and
 fix uninitialized variables and invalid memory usage.}
+\resumeItem{Collaborated with mentors and upstream contributors through mailing-list discussions, code reviews, \& patch revisions.}
+
 \resumeItemListEnd
 \resumeSubHeadingListEnd
-\vspace{-7pt}
+\vspace{-25pt}
 
 \resumeSubHeadingListStart
 
@@ -205,8 +211,8 @@ fix uninitialized variables and invalid memory usage.}
   manage inter-test dependencies,
 streamlining test maintenance and enabling faster debugging cycles.}
 \resumeItem{Implemented secure JWT-based authentication with
-role-based (admin/user) access, strengthening API security and control.}
-\resumeItem{Built a notification system in FastAPI using event
+role-based access, strengthening API security and control.}
+\resumeItem{Built notification system using event
 triggers and async tasks, improving user engagement with timely alerts.}
 \resumeItemListEnd
 
@@ -214,43 +220,21 @@ triggers and async tasks, improving user engagement with timely alerts.}
 \vspace{-16pt}
 
 % -----------EXPERIENCE-----------
+
 \section{Open-Source Contribution}
 \resumeSubHeadingListStart
-
 \resumeSubheading
 {Scientific Python Libraries}
-{\textbf{\href{https://github.com/sunpy/sunpy/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{SunPy
-    PRs}
-    \; | \;
-    \href{https://github.com/StingraySoftware/stingray/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{Stingray
-PRs}}}
+{{\href{https://github.com/sunpy/sunpy/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{SunPy}}
+ --
+\href{https://github.com/StingraySoftware/stingray/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{Stingray}}
 {}{}
-
 \vspace{-20pt}
 \resumeItemListStart
-
-\resumeItem{\textbf{SunPy}}
-\resumeItemListStart
-\resumeItem{Extended \texttt{TimeSeries} with slicing, time-range
-truncation, and custom energy bin support for flexible solar data analysis.}
-\resumeItem{Improved core utilities including
-  \texttt{TimeRange.shift()}, timestamp parsing, and
-\texttt{CompositeMap} plotting.}
-\resumeItem{Maintained CI/CD automation using GitHub Actions,
-including changelog extraction and release workflows.}
-\resumeItemListEnd
-
-\vspace{4pt}
-\resumeItem{\textbf{Stingray}}
-\resumeItemListStart
-\resumeItem{Built a custom time-series modeling pipeline and added
-support for Fermi GBM FITS file ingestion.}
-\resumeItem{Fixed core data handling paths (\texttt{EventList.read},
-\texttt{Lightcurve.shift}) to ensure correctness and consistency.}
-\resumeItem{Redesigned documentation UI and collaborated with
-maintainers via PR reviews and issue discussions.}
-\resumeItemListEnd
-
+\resumeItem{Contributed to \textbf{SunPy} and \textbf{Stingray}, open-source Python libraries for scientific data analysis.}
+\resumeItem{Enhanced time-series analysis, data processing, ingestion, and visualization capabilities across both libraries.}
+\resumeItem{Redesigned documentation UI and Improved data handling, utility functions, documentation, and maintainability.}
+\resumeItem{Contributed to CI/CD automation, release workflows, code reviews, and issue discussions with project maintainers.}
 \resumeItemListEnd
 \resumeSubHeadingListEnd
 \vspace{-12pt}
@@ -259,31 +243,38 @@ maintainers via PR reviews and issue discussions.}
 \section{Projects}
 \vspace{-3pt}
 \resumeSubHeadingListStart
+
 \resumeSubheading
-{sysfs-counter – Linux Kernel Input
-Counter}{\href{https://github.com/ankitkhushwaha/sysfs-counter}{GitHub}}
-{C, Linux Kernel, Input Subsystem, sysfs, GNOME Extension}{}
+{Linux Device Driver -- Various Kernel Subsystems}
+{\href{https://github.com/ankitkhushwaha/Linux-Device-Driver/}{\faGithub}}
+{C, Linux Kernel, Device Driver}{}
+
 \vspace{-5pt}
+
 \resumeItemListStart
-\resumeItem{Developed a Linux kernel module that hooks into the input
-  subsystem to track \texttt{Key} press events and maintain a
-kernel-space counter.}
-\resumeItem{Exposed the counter to user space via a sysfs interface,
-enabling safe read access without custom device nodes.}
-\resumeItem{Integrated the sysfs output with a GNOME extension to
-display live key press counts, demonstrating kernel–user space interaction.}
+
+\resumeItem{Developed Linux kernel modules covering various kernel subsystems, covering \textbf{Linux kernel v7.1.0}.}
+
+\resumeItem{Studied and documented the design and behavior of each subsystem through technical blogs at \textbf{\href{https://ankitkdev.com/blog}{ankitkdev.com/blog}}, focusing on practical kernel internals and driver development.}
+
+\resumeItem{Tested and debugged kernel modules using \textbf{QEMU}, validating driver behavior in an isolated virtualized environment.}
+
+\resumeItem{Implemented kernel-user space interfaces and incorporated \textbf{error handling and resource management} to improve driver reliability and robustness.}
+
 \resumeItemListEnd
+
+\resumeSubHeadingListEnd
 \vspace{-3pt}
 \resumeSubheading
 {CPU Scheduler
-Simulation}{\href{https://github.com/ankitkhushwaha/cpu-schedular}{GitHub}}
+Simulation}{\href{https://github.com/ankitkhushwaha/cpu-schedular}{\faGithub}}
 {C, pthreads, Makefile, gdb, Debug Logging}{}
 \vspace{-3pt}
 \resumeItemListStart
 \resumeItem{Implemented a multithreaded CPU scheduling simulator with
 separate arrival, scheduler, and wakeup threads to model process execution.}
 \vspace{-3pt}
-\resumeItem{Added support for FCFS, SJF, SRTF, and Round Robin
+\resumeItem{Added support for FCFS, SJF, SRTF, and RR
 scheduling, analyzing turnaround, waiting, and completion times.}
 \vspace{-3pt}
 \resumeItem{Built a debug logging system for testing and configured
@@ -294,7 +285,6 @@ clean production builds with logs disabled, ensuring maintainability.}
 \resumeSubHeadingListEnd
 
 \section{Certifications}
-\vspace{2pt}
 \resumeSubHeadingListStart
 
 \resumeSubheading
@@ -302,6 +292,12 @@ clean production builds with logs disabled, ensuring maintainability.}
 {Issued Aug 2025}
 {LFD103: A Beginner's Guide to Linux Kernel Development}
 {\href{https://www.credly.com/badges/84d27b87-bf04-43fb-971b-6484b78cb651/public_url}{Credly}}
+\vspace{-4pt}
+\resumeSubheading
+{Udemy}
+{Issued July 2026}
+{LDD1: Linux Device Driver Programming With Beaglebone Black}
+{\href{https://www.udemy.com/certificate/UC-5013297e-6908-4e59-8aef-18bf2e4a293e/}{Udemy}}
 
 \resumeSubHeadingListEnd
 
