@@ -14,21 +14,21 @@ on:
 jobs:
   compile-and-commit:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write  # Permission to commit and push
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-        
+
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v4
         with:
           root_file: resume.tex
-          
+
       - name: Verify PDF was created
         run: |
           if [ -f "resume.pdf" ]; then
@@ -39,17 +39,17 @@ jobs:
             exit 1
           fi
           mkdir -p build
-          mv resume.pdf build/resume.pdf
-          ls -lh build/resume.pdf
-          
+          mv resume.pdf build/ankit_khushwaha_iitdh_resume.pdf
+          ls -lh build/ankit_khushwaha_iitdh_resume.pdf
+
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
       - name: Commit and Push PDF
         run: |
-          git add -f build/resume.pdf
+          git add -f build/ankit_khushwaha_iitdh_resume.pdf
           # Try to commit, but don't fail if there are no changes
           git commit -m "Build: Compile LaTeX resume to PDF [$(date '+%Y-%m-%d %H:%M:%S')]" || true
           git push origin HEAD:main || echo "Push failed or no changes to push"
