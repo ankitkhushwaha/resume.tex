@@ -139,7 +139,7 @@
 {Indian Institute Of Technology Dharwad}{Dec. 2022 -- Present}
 {Bachelor of Science-Master of Science, Physics}{Dharwad, Karnataka}
 \resumeSubHeadingListEnd
-\vspace{-12pt}
+\vspace{-16pt}
 
 %-----------PROGRAMMING SKILLS-----------
 
@@ -148,13 +148,13 @@
     \small{
     \item \textbf{Languages:} C, C++, Python\\
       \vspace{-2pt}
-    \item \textbf{Systems \& Tools:} Linux, QEMU, U-boot, GDB, GNU Make, Git, Vim \\
+    \item \textbf{Systems \& Tools:} Linux, QEMU, U-boot, GDB, GNU Make, Kbuild, Git \\
       \vspace{-2pt}
     \item \textbf{Core Skills:} Linux Device Driver, Kernel Modules,
- Kernel debugging, Memory Management,
-System Programming, CLI \\
+ Kernel Debugging, Device Tree, System Programming \\
+
       \vspace{-2pt}
-    \item \textbf{Kernel Subsystems:} Character Drivers, Sysfs, Procfs, Timers, deferred work, Interrupt Handling  \\
+    \item \textbf{Kernel Subsystems:} I2C, Platform/Custom Bus, Character Drivers, Sysfs, Procfs, Timers, Workqueues, Interrupt Handling, Synchronization \\
 
       \vspace{-2pt}
     \item \textbf{Familiar With:}  Shell Scripting, Computer Architecture, Web Development\\
@@ -205,23 +205,23 @@ triggers and async tasks, improving user engagement with timely alerts.}
 
 % -----------EXPERIENCE-----------
 
-\section{Open-Source Contribution}
-\resumeSubHeadingListStart
-\resumeSubheading
-{Scientific Python Libraries}
-{{\href{https://github.com/sunpy/sunpy/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{SunPy}}
- -
-\href{https://github.com/StingraySoftware/stingray/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{Stingray}}
-{}{}
-\vspace{-20pt}
-\resumeItemListStart
-\resumeItem{Contributed to \textbf{SunPy} and \textbf{Stingray}, open-source Python libraries for scientific data analysis.}
-\resumeItem{Enhanced time-series analysis, data processing, ingestion, and visualization capabilities across both libraries.}
-\resumeItem{Redesigned documentation UI and Improved data handling, utility functions, documentation, and maintainability.}
-\resumeItem{Contributed to CI/CD automation, release workflows, code reviews, and issue discussions with project maintainers.}
-\resumeItemListEnd
-\resumeSubHeadingListEnd
-\vspace{-12pt}
+% \section{Open-Source Contribution}
+% \resumeSubHeadingListStart
+% \resumeSubheading
+% {Scientific Python Libraries}
+% {{\href{https://github.com/sunpy/sunpy/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{SunPy}}
+%  -
+% \href{https://github.com/StingraySoftware/stingray/issues?q=is\%3Apr+is\%3Aopen+author\%3Aankitkhushwaha}{Stingray}}
+% {}{}
+% \vspace{-20pt}
+% \resumeItemListStart
+% \resumeItem{Contributed to \textbf{SunPy} and \textbf{Stingray}, open-source Python libraries for scientific data analysis.}
+% \resumeItem{Enhanced time-series analysis, data processing, ingestion, and visualization capabilities across both libraries.}
+% \resumeItem{Redesigned documentation UI and Improved data handling, utility functions, documentation, and maintainability.}
+% \resumeItem{Contributed to CI/CD automation, release workflows, code reviews, and issue discussions with project maintainers.}
+% \resumeItemListEnd
+% \resumeSubHeadingListEnd
+% \vspace{-12pt}
 
 %-----------PROJECTS-----------
 \section{Projects}
@@ -229,39 +229,35 @@ triggers and async tasks, improving user engagement with timely alerts.}
 
 \resumeSubHeadingListStart
 \resumeSubheading
-{Linux Device Driver - Various Kernel Subsystems}
-{\href{https://github.com/ankitkhushwaha/Linux-Device-Driver/}{\faGithub}}
-{C, Linux Kernel, Device Driver}{}
+{Linux I2C EEPROM Driver}
+{\href{https://github.com/ankitkhushwaha/linux-i2c-eeprom-driver}{\faGithub}}
+{C, Linux Kernel, I2C, Device Driver}{}
 \vspace{-5pt}
 \resumeItemListStart
-\resumeItem{Developed Linux kernel modules across multiple kernel subsystems targeting \textbf{Linux kernel v7.1.0}.}
-\resumeItem{Implemented and explored kernel mechanisms including \textbf{timers, workqueues, sysfs, procfs, input handling, and synchronization}.}
-\resumeItem{Tested and debugged kernel modules using \textbf{QEMU} and kernel debugging tools, validating behavior in an isolated environment.}
-\resumeItem{Implemented kernel--user space interfaces with \textbf{error handling and resource management} for reliable driver operation.}
-\resumeItem{Documented subsystem internals and implementation details through technical blogs at \textbf{\href{https://ankitkdev.com/blog}{ankitkdev.com/blog}}.}
-
+\resumeItem{Developed a Linux \textbf{I2C client driver} for an EEPROM device, implementing \textbf{probe/remove} lifecycle and device--driver matching via the \textbf{I2C ID table}.}
+\resumeItem{Implemented byte-level and page-aware \textbf{read/write} access over the I2C bus using the kernel \textbf{I2C transfer APIs}.}
+\resumeItem{Exposed EEPROM contents to user space through a \textbf{sysfs/character device interface} with proper \textbf{bounds checking and error handling}.}
+\resumeItem{Protected concurrent accesses with \textbf{mutex-based locking} and handled write-cycle delays and transfer failures for reliable operation.}
+\resumeItem{Validated the driver with \textbf{beaglebone black} and debugged using kernel logs and \textbf{dynamic debug}.}
 \resumeItemListEnd
+\vspace{-8pt}
 \resumeSubHeadingListEnd
-
 
 \resumeSubHeadingListStart
 \vspace{-3pt}
 \resumeSubheading
-{CPU SchedulerSimulation}{\href{https://github.com/ankitkhushwaha/cpu-schedular}{\faGithub}}
-{C, pthreads, Makefile, gdb, Debug Logging}{}
+{Mini SoC Device Model}
+{\href{https://github.com/ankitkhushwaha/mini-soc-device-model}{\faGithub}}
+{C, Linux Kernel, Device Model, Makefile}{}
 \vspace{-3pt}
 \resumeItemListStart
-\resumeItem{Implemented a multithreaded CPU scheduling simulator with
-separate arrival, scheduler, and wakeup threads to model process execution.}
-\vspace{-3pt}
-\resumeItem{Added support for FCFS, SJF, SRTF, and RR
-scheduling, analyzing turnaround, waiting, and completion times.}
-\vspace{-3pt}
-\resumeItem{Built a debug logging system for testing and configured
-clean production builds with logs disabled, ensuring maintainability.}
-\resumeItemListEnd
+\resumeItem{Built a simulated \textbf{SoC sensor hub} as three kernel modules (bus, device, driver) implementing a custom \textbf{\texttt{bus\_type}} modelled on the Linux \textbf{platform bus}.}
+\resumeItem{Implemented \textbf{device/driver matching, probe/remove, and sysfs unbinding}, along with \textbf{\texttt{struct device}} lifecycle management .}
+\resumeItem{Added \textbf{Device Tree} support by binding \textbf{\texttt{of\_node}} to devices with \texttt{device\_set\_node()} and populating and tearing down devices from DT nodes}
+\resumeItem{Tested on \textbf{ARM QEMU} with a cross-compiled kernel and debugged with \textbf{gdb} using kernel GDB scripts.}\resumeItemListEnd
 \vspace{-8pt}
 \resumeSubHeadingListEnd
+
 
 \section{Certifications}
 \resumeSubHeadingListStart
